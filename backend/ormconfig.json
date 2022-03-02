@@ -1,0 +1,11 @@
+{
+   "type": "mongodb",
+   "host": "localhost",
+   "database": "mydb",
+   "synchronize": true,
+   "logging": false,
+    "entities": [
+       "src/app/models/*.ts"
+    ],
+    "seUnifiedTopology": true
+}
