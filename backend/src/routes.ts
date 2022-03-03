@@ -4,7 +4,7 @@ import UserController from "./app/controllers/UserController";
 import AuthController from "./app/controllers/AuthController";
 const router = Router();
 
-router.post('/users', UserController.register)
+router.post('/register', UserController.register)
 router.post('/auth', AuthController.authenticate)
-router.get('/users', authMiddleware,  UserController.index)
+router.get('/', UserController.index)
 export default router;

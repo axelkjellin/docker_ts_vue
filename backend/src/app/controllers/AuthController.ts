@@ -1,5 +1,4 @@
 import { Request, Response} from 'express';
-import { getRepository } from 'typeorm';
 import User from '../models/User';
 import { getMongoRepository } from "typeorm";
 import bcrypt from 'bcryptjs'
@@ -7,6 +6,7 @@ import jwt from 'jsonwebtoken';
 
 class UserController {
     async authenticate(req: Request, res: Response) {
+        console.log('eaeee meu chaa')
         const repository = getMongoRepository(User)
         const { email, password} = req.body
 

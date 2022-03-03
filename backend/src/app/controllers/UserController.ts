@@ -5,7 +5,7 @@ import { getMongoRepository } from "typeorm";
 
 class UserController {
     index(req: Request, res: Response) {
-        return res.send({userID: req.userId})
+       console.log('oioi')
     }
 
     async register(req: Request, res: Response) {

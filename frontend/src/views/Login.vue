@@ -33,7 +33,6 @@
 
 <script>
 import redirect from "@/exports/redirect";
-import apiUrl from '@/exports/apiUrl'
 
 export default {
   name: "Login",
@@ -47,17 +46,21 @@ export default {
   },
   methods: {
     login() {
-      this.$http
-        .post( apiUrl + "login", this.user)
+      console.log(this.user)
+      this.axios
+        .post("http://localhost:3000/auth", this.user)
         .then(resp => {
+          console.log('resp:::', resp)
           if (resp.data.token) {
-            sessionStorage.setItem("session", JSON.stringify(resp.data));
+            // sessionStorage.setItem("session", JSON.stringify(resp.data));
           } else {
-            redirect();
+            console.log(resp)
+            // redirect();
           }
         })
-        .finally(() => {
-          this.$router.push('home')
+        .finally((resp) => {
+          // console.log(resp)
+          // this.$router.push('home')
         });
     }
   }
