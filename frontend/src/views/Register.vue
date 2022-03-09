@@ -1,10 +1,10 @@
 
 <template>
-  <b-container class="fluid h-100">
+  <b-container class="fluid h-100 col-sm-12">
     <b-row class="justify-content-md-center h-100" align-v="center">
       <b-col cols="4">
-        <b-card title="Register account">
-          <b-card>
+        <!-- <b-card title="Register account"> -->
+          <!-- <b-card> -->
             <b-form-group
               class="mb-3"
               id="fieldset-1"
@@ -44,8 +44,8 @@
               <b-button class="btn" size="sm" href="/">Login</b-button>
               <b-button variant="primary" size="sm" @click="register()">Register</b-button>
             </div>
-          </b-card>
-        </b-card>
+          <!-- </b-card> -->
+        <!-- </b-card> -->
       </b-col>
     </b-row>
   </b-container>
@@ -68,10 +68,11 @@ export default {
   },
   methods: {
     register() {
-      this.$http
-        .post("http://localhost:8000/api/register", this.user)
+      this.axios
+        .post("http://localhost:3000/register", this.user)
         .then(resp => {
-          if (resp.status == 201) {
+          if (resp.status == 201 || resp.status == 200) {
+            console.log('aqui')
             return redirect('');
           }
         });

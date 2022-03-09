@@ -5,8 +5,7 @@ import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken';
 
 class UserController {
-    async authenticate(req: Request, res: Response) {
-        console.log('eaeee meu chaa')
+    async login(req: Request, res: Response) {
         const repository = getMongoRepository(User)
         const { email, password} = req.body
 

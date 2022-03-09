@@ -2,7 +2,7 @@
   <div id="form">
       <b-container class="fluid">
           <h1 style="text-align:right;margin-top:30;">
-              Olá {{currentUser.name}}
+              {{currentUser}}
           </h1> 
           <h6 style="text-align:right;margin-bottom:30px;">
               <b-button size="sm" @click="logout()">logout</b-button>
@@ -26,13 +26,17 @@ export default {
     };
   },
   mounted() {
-    this.getCurrentUser(sessionStorage.getItem("session"));
+    this.setStorageUser(sessionStorage.getItem("session"))
+    // this.getCurrentUser(sessionStorage.getItem("session"));
   },
   methods: {
+    setStorageUser(user) {
+      console.log(user)
+    },
     getCurrentUser(session) {
       if (session) {
         this.currentUser = JSON.parse(session);
-        this.getAuthorization();
+        // this.getAuthorization();
       } else {
         console.log('oi')
         redirect();
@@ -52,6 +56,9 @@ export default {
             return true
         }
     }
+  },
+  computed: {
+
   }
 };
 </script>

@@ -2,8 +2,8 @@
   <b-container class="fluid h-100">
     <b-row class="justify-content-md-center h-100" align-v="center">
       <b-col cols="4">
-        <b-card title="Login">
-          <b-card>
+        <!-- <b-card title="Login"> -->
+          <!-- <b-card> -->
             <b-form-group
               class="mb-3"
               id="fieldset-1"
@@ -24,8 +24,9 @@
               <b-button size="sm" variant="primary" @click="login()" >Login</b-button>
               <b-button class="btn" href="/register" size="sm">Register</b-button>
             </div>
-          </b-card>
-        </b-card>
+            {{currentUser}}
+          <!-- </b-card> -->
+        <!-- </b-card> -->
       </b-col>
     </b-row>
   </b-container>
@@ -48,14 +49,13 @@ export default {
     login() {
       console.log(this.user)
       this.axios
-        .post("http://localhost:3000/auth", this.user)
+        .post("http://localhost:3000/login", this.user)
         .then(resp => {
-          console.log('resp:::', resp)
-          if (resp.data.token) {
-            // sessionStorage.setItem("session", JSON.stringify(resp.data));
+          if (resp.data) {
+            sessionStorage.setItem("session", JSON.stringify(resp.data));
+            redirect('home')
           } else {
-            console.log(resp)
-            // redirect();
+            redirect();
           }
         })
         .finally((resp) => {

@@ -7,8 +7,9 @@ import routes from './routes';
 
 const app = express();
 
+app.use(cors())
 app.use(express.json())
-app.use(cors)
-app.use(routes)
 
-app.listen(3000, () => console.log('rodando...'))
+app.use(routes)
+const porta = 3000;
+app.listen(porta, () => console.log(`rodando... na porta ${porta}`))
